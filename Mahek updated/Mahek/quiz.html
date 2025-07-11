@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Digital Learning</title>
+    <link rel="stylesheet" href="style-dark.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader"></div>
+        <p style="color: var(--text-secondary); margin-top: 1rem;">Loading your learning experience...</p>
+    </div>
+    
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html" style="color: white; text-decoration: none;"><div class="logo-container">
+                    <div class="logo-icon">
+                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="38" height="38" rx="8" fill="url(#uniqueGrad1)" stroke="url(#uniqueGrad2)" stroke-width="2"/>
+                            <path d="M12 15L21 24L30 15" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="18" y="8" width="6" height="6" rx="3" fill="white"/>
+                            <circle cx="15" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <circle cx="21" cy="32" r="1.5" fill="rgba(255,255,255,0.6)"/>
+                            <circle cx="27" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <defs>
+                                <linearGradient id="uniqueGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea"/>
+                                    <stop offset="50%" style="stop-color:#764ba2"/>
+                                    <stop offset="100%" style="stop-color:#f093fb"/>
+                                </linearGradient>
+                                <linearGradient id="uniqueGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#a8edea"/>
+                                    <stop offset="100%" style="stop-color:#fed6e3"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Digital Learning</span>
+                </div></a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="features.html" class="active">Features</a>
+                                        <div class="dropdown-content">
+                        <a href="video-lessons.html"><i class="fas fa-play-circle"></i> Video Lessons</a>
+                        <a href="timetable-planner.html"><i class="fas fa-calendar-alt"></i> Timetable Planner</a>
+                        <a href="ai-practice.html"><i class="fas fa-brain"></i> AI Practice</a>
+                        <a href="virtual-classroom.html"><i class="fas fa-video"></i> Virtual Classroom</a>
+                        <a href="books.html"><i class="fas fa-book"></i> Book Library</a>
+                        <a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+                    </div>
+                </li>
+                <li><a href="courses.html">Our Courses</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="for-educators.html">For Educators</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+                                <li class="profile-menu">
+                    <button id="profileBtn" class="nav-button"><i class="fas fa-user"></i></button>
+                    <div class="profile-dropdown">
+                        <div class="profile-info">
+                            <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                            <h4 class="profile-name">Student User</h4>
+                            <p class="profile-email">student@edutech.com</p>
+                        </div>
+                        <ul class="profile-links">
+                            <li><a href="profile.html"><i class="fas fa-user-cog"></i> My Profile</a></li>
+                            <li><a href="#"><i class="fas fa-chart-line"></i> Progress</a></li>
+                            <li><a href="#"><i class="fas fa-bookmark"></i> Bookmarks</a></li>
+                            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="quiz-section">
+            <div class="quiz-container">
+                <div class="quiz-header glass">
+                    <h2><i class="fas fa-brain"></i> Interactive Quiz</h2>
+                    <p>Choose your subject and test your knowledge with our comprehensive quiz system</p>
+                    <div class="subject-cards">
+                        <div class="subject-card" data-subject="mathematics">
+                            <div class="subject-icon"><i class="fas fa-calculator"></i></div>
+                            <h3>Mathematics</h3>
+                            <p>Algebra, Geometry & More</p>
+                        </div>
+                        <div class="subject-card" data-subject="science">
+                            <div class="subject-icon"><i class="fas fa-atom"></i></div>
+                            <h3>Science</h3>
+                            <p>Physics, Chemistry & Biology</p>
+                        </div>
+                        <div class="subject-card" data-subject="programming">
+                            <div class="subject-icon"><i class="fas fa-code"></i></div>
+                            <h3>Programming</h3>
+                            <p>HTML, CSS, JavaScript & Python</p>
+                        </div>
+                        <div class="subject-card" data-subject="english">
+                            <div class="subject-icon"><i class="fas fa-language"></i></div>
+                            <h3>English</h3>
+                            <p>Grammar, Vocabulary & Writing</p>
+                        </div>
+                        <div class="subject-card" data-subject="history">
+                            <div class="subject-icon"><i class="fas fa-globe"></i></div>
+                            <h3>History</h3>
+                            <p>World Events & Civilizations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quizContent" class="quiz-content glass" style="display: none;">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                        <span id="questionCounter">Question 1 of 10</span>
+                    </div>
+
+                    <div class="question-section">
+                        <h3 id="questionText">Question will appear here</h3>
+                        <div id="optionsContainer" class="options-container">
+                            <!-- Options will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button id="nextQuestion" class="cta-button" disabled>Next Question</button>
+                        <button id="submitQuiz" class="cta-button" style="display: none;">Submit Quiz</button>
+                    </div>
+                </div>
+
+                <div id="quizResults" class="quiz-results glass" style="display: none;">
+                    <div class="results-header">
+                        <i class="fas fa-trophy"></i>
+                        <h2>Quiz Complete!</h2>
+                    </div>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="finalScore">0%</span>
+                        </div>
+                        <p id="scoreMessage">Great job!</p>
+                    </div>
+                    <div class="results-details">
+                        <div class="result-stat">
+                            <span class="stat-label">Correct Answers</span>
+                            <span id="correctCount" class="stat-value">0</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="stat-label">Total Questions</span>
+                            <span id="totalCount" class="stat-value">10</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="stat-label">Time Taken</span>
+                            <span id="timeTaken" class="stat-value">0:00</span>
+                        </div>
+                    </div>
+                    <button id="retakeQuiz" class="cta-button">Take Another Quiz</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content glass">
+                <span class="close-button" id="closeLoginModal">&times;</span>
+                <div class="modal-header">
+                    <div class="modal-icon"><i class="fas fa-sign-in-alt"></i></div>
+                    <h2>Welcome Back</h2>
+                    <p class="modal-subtitle">Sign in to your account</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Signup Modal -->
+        <div id="signupModal" class="modal">
+            <div class="modal-content glass">
+                <span class="close-button" id="closeSignupModal">&times;</span>
+                <div class="modal-header">
+                    <div class="modal-icon"><i class="fas fa-user-plus"></i></div>
+                    <h2>Join Us Today</h2>
+                    <p class="modal-subtitle">Create your learning account</p>
+                </div>
+                
+            </div>
+        </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Digital Learning</h3>
+                <p>Revolutionizing education through AI-powered personalized learning experiences.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script src="script-enhanced.js"></script>
+    <script src="profile-dropdown.js"></script>
+    
+    <script>
+        // Perfect Modal System
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtnNav');
+            const signupBtn = document.getElementById('signupBtnNav');
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            
+            function showModal(modal) {
+                if (modal) {
+                    // Hide all modals first
+                    document.querySelectorAll('.modal').forEach(m => {
+                        m.style.display = 'none';
+                        m.classList.remove('show');
+                    });
+                    
+                    // Show the requested modal
+                    modal.style.display = 'flex';
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            function hideModal(modal) {
+                if (modal) {
+                    modal.style.display = 'none';
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+            
+            function hideAllModals() {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    hideModal(modal);
+                });
+            }
+            
+            // Login button - shows LOGIN modal
+            if (loginBtn) {
+                loginBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(loginModal);
+                });
+            }
+            
+            // Signup button - shows SIGNUP modal
+            if (signupBtn) {
+                signupBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(signupModal);
+                });
+            }
+            
+            // Close buttons
+            document.querySelectorAll('.close-button').forEach(btn => {
+                btn.addEventListener('click', hideAllModals);
+            });
+            
+            // Click outside to close
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) hideAllModals();
+                });
+            });
+            
+            // Modal switching links
+            const switchToSignup = document.getElementById('switchToSignup');
+            const switchToLogin = document.getElementById('switchToLogin');
+            
+            if (switchToSignup) {
+                switchToSignup.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(signupModal);
+                });
+            }
+            
+            if (switchToLogin) {
+                switchToLogin.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(loginModal);
+                });
+            }
+            
+            // ESC key to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideAllModals();
+            });
+        });
+    </script>
+</body>
+</html>

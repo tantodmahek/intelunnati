@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Educators - Digital Learning</title>
+    <link rel="stylesheet" href="style-dark.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Perfect Loading Screen -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader"></div>
+        <p style="color: var(--text-secondary); margin-top: 1rem;">Loading your learning experience...</p>
+    </div>
+    
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html" style="color: white; text-decoration: none;"><div class="logo-container">
+                    <div class="logo-icon">
+                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="38" height="38" rx="8" fill="url(#uniqueGrad1)" stroke="url(#uniqueGrad2)" stroke-width="2"/>
+                            <path d="M12 15L21 24L30 15" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="18" y="8" width="6" height="6" rx="3" fill="white"/>
+                            <circle cx="15" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <circle cx="21" cy="32" r="1.5" fill="rgba(255,255,255,0.6)"/>
+                            <circle cx="27" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <defs>
+                                <linearGradient id="uniqueGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea"/>
+                                    <stop offset="50%" style="stop-color:#764ba2"/>
+                                    <stop offset="100%" style="stop-color:#f093fb"/>
+                                </linearGradient>
+                                <linearGradient id="uniqueGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#a8edea"/>
+                                    <stop offset="100%" style="stop-color:#fed6e3"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Digital Learning</span>
+                </div></a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="features.html">Features</a>
+                                        <div class="dropdown-content">
+                        <a href="video-lessons.html"><i class="fas fa-play-circle"></i> Video Lessons</a>
+                        <a href="timetable-planner.html"><i class="fas fa-calendar-alt"></i> Timetable Planner</a>
+                        <a href="ai-practice.html"><i class="fas fa-brain"></i> AI Practice</a>
+                        <a href="virtual-classroom.html"><i class="fas fa-video"></i> Virtual Classroom</a>
+                        <a href="books.html"><i class="fas fa-book"></i> Book Library</a>
+                        <a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+                    </div>
+                </li>
+                <li><a href="courses.html">Our Courses</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="for-educators.html" class="active">For Educators</a></li>
+                
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+                                <li class="auth-buttons"><button id="loginBtnNav" class="nav-button">Login</button></li>
+
+                
+                                <li class="auth-buttons"><button id="signupBtnNav" class="nav-button">Sign Up</button></li>
+
+                
+                                                <li class="profile-menu">
+                    <button id="profileBtn" class="nav-button"><i class="fas fa-user"></i></button>
+                    <div class="profile-dropdown">
+                        <ul class="profile-links">
+                            <li><a href="profile.html"><i class="fas fa-user-cog"></i> My Profile</a></li>
+                            <li><a href="#"><i class="fas fa-chart-line"></i> Progress</a></li>
+                            <li><a href="#"><i class="fas fa-bookmark"></i> Bookmarks</a></li>
+                            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+                            <li><a href="#"><i class="fas fa-chart-line"></i> Progress</a></li>
+                            <li><a href="#"><i class="fas fa-bookmark"></i> Bookmarks</a></li>
+                            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+                    <div>
+                        
+                        <div class="input-group">
+                        <div class="input-icon"><i class="fas fa-lock"></i></div>
+                        
+                    </div>
+                    </div>
+                    <button type="submit" class="cta-button">Login</button>
+                    <p class="modal-switch">Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+
+        
+
+        <section id="for-educators" class="animate-on-scroll">
+            <div class="section-header">
+                <div class="header-content">
+                    <h2><i class="fas fa-chalkboard-teacher"></i> Empower Your Teaching</h2>
+                    <p class="section-subtitle">Transform your classroom with AI-powered tools designed specifically for modern educators</p>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">Free</span>
+                        <span class="stat-label">Platform</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Open</span>
+                        <span class="stat-label">Access</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="educator-features-grid">
+                <div class="educator-card glass animate-on-scroll" data-feature="classroom">
+                    <div class="card-header">
+                        <div class="feature-icon-wrapper">
+                            <div class="feature-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <div class="icon-glow"></div>
+                        </div>
+
+                    </div>
+                    <div class="card-content">
+                        <h3>Classroom Management</h3>
+                        <p>Streamline your teaching workflow with intelligent class organization, automated attendance, and seamless assignment distribution.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Smart class organization</li>
+                            <li><i class="fas fa-check"></i> Automated grading system</li>
+                            <li><i class="fas fa-check"></i> Real-time collaboration</li>
+                            <li><i class="fas fa-check"></i> Parent communication tools</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="educator-card glass animate-on-scroll" data-feature="analytics">
+                    <div class="card-header">
+                        <div class="feature-icon-wrapper">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="icon-glow"></div>
+                        </div>
+
+                    </div>
+                    <div class="card-content">
+                        <h3>Performance Analytics</h3>
+                        <p>Gain actionable insights into student progress with AI-powered analytics that identify learning gaps and suggest interventions.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Detailed progress tracking</li>
+                            <li><i class="fas fa-check"></i> Learning gap identification</li>
+                            <li><i class="fas fa-check"></i> Predictive performance models</li>
+                            <li><i class="fas fa-check"></i> Custom report generation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="educator-card glass animate-on-scroll" data-feature="content">
+                    <div class="card-header">
+                        <div class="feature-icon-wrapper">
+                            <div class="feature-icon">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                            <div class="icon-glow"></div>
+                        </div>
+
+                    </div>
+                    <div class="card-content">
+                        <h3>AI Content Creation</h3>
+                        <p>Create engaging, interactive lessons in minutes with our AI-powered content generator that adapts to your teaching style.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> AI-generated lesson plans</li>
+                            <li><i class="fas fa-check"></i> Interactive quiz builder</li>
+                            <li><i class="fas fa-check"></i> Multimedia integration</li>
+                            <li><i class="fas fa-check"></i> Curriculum alignment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h3>Ready to Transform Your Classroom?</h3>
+                    <p>Explore our innovative AI-powered teaching tools designed to enhance your educational experience.</p>
+                    <div class="cta-buttons">
+                        <button class="cta-button primary" onclick="checkLoginAndRedirect('courses.html')">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Feature Modal -->
+        <div id="featureModal" class="feature-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Feature Details</h3>
+                    <button class="close-modal" onclick="closeFeatureModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content glass">
+                <span class="close-button" id="closeLoginModal">&times;</span>
+                <div class="modal-header">
+                    <div class="modal-icon"><i class="fas fa-sign-in-alt"></i></div>
+                    <h2>Welcome Back</h2>
+                    <p class="modal-subtitle">Sign in to your account</p>
+                </div>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <div class="input-icon"><i class="fas fa-envelope"></i></div>
+                        <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-icon"><i class="fas fa-lock"></i></div>
+                        <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="cta-button modal-btn">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                    <div class="modal-divider"><span>or</span></div>
+                    <button type="button" class="social-btn google-btn">
+                        <i class="fab fa-google"></i> Continue with Google
+                    </button>
+                    <p class="modal-switch">Don't have an account? <a href="#" id="switchToSignup">Create Account</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Signup Modal -->
+        <div id="signupModal" class="modal">
+            <div class="modal-content glass">
+                <span class="close-button" id="closeSignupModal">&times;</span>
+                <div class="modal-header">
+                    <div class="modal-icon"><i class="fas fa-user-plus"></i></div>
+                    <h2>Join Us Today</h2>
+                    <p class="modal-subtitle">Create your learning account</p>
+                </div>
+                <form id="signupForm">
+                    <div class="input-group">
+                        <div class="input-icon"><i class="fas fa-user"></i></div>
+                        <input type="text" id="signupName" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-icon"><i class="fas fa-envelope"></i></div>
+                        <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-icon"><i class="fas fa-lock"></i></div>
+                        <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-icon"><i class="fas fa-lock"></i></div>
+                        <input type="password" id="signupConfirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#">Terms & Conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="cta-button modal-btn">
+                        <i class="fas fa-user-plus"></i> Create Account
+                    </button>
+                    <div class="modal-divider"><span>or</span></div>
+                    <button type="button" class="social-btn google-btn">
+                        <i class="fab fa-google"></i> Sign up with Google
+                    </button>
+                    <p class="modal-switch">Already have an account? <a href="#" id="switchToLogin">Sign In</a></p>
+                </form>
+            </div>
+        </div>
+
+        
+        </div>
+
+        
+        </div>
+    <footer>
+        <p></p>
+    </footer>
+    <script src="script-enhanced.js"></script>
+    <script src="profile-dropdown.js"></script>
+    
+    
+    
+    
+    <script>
+        // Updated Authentication System
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtnNav');
+            const signupBtn = document.getElementById('signupBtnNav');
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            const authButtons = document.querySelectorAll('.auth-buttons');
+            const profileMenu = document.querySelector('.profile-menu');
+            
+            // Check login status on page load
+            checkAuthStatus();
+            
+            function checkAuthStatus() {
+                const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+                
+                if (isLoggedIn) {
+                    // Hide login/signup buttons
+                    authButtons.forEach(btn => btn.style.display = 'none');
+                    // Show profile menu
+                    if (profileMenu) profileMenu.style.display = 'block';
+                } else {
+                    // Show login/signup buttons
+                    authButtons.forEach(btn => btn.style.display = 'block');
+                    // Hide profile menu
+                    if (profileMenu) profileMenu.style.display = 'none';
+                }
+            }
+            
+            function showModal(modal) {
+                if (modal) {
+                    document.querySelectorAll('.modal').forEach(m => {
+                        m.style.display = 'none';
+                        m.classList.remove('show');
+                    });
+                    modal.style.display = 'flex';
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            function hideAllModals() {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                    modal.classList.remove('show');
+                });
+                document.body.style.overflow = 'auto';
+            }
+            
+            function handleLogin(email, name) {
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userName', name);
+                localStorage.setItem('memberSince', new Date().toLocaleDateString());
+                checkAuthStatus();
+                hideAllModals();
+            }
+            
+            // Login button click
+            if (loginBtn) {
+                loginBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(loginModal);
+                });
+            }
+            
+            // Signup button click
+            if (signupBtn) {
+                signupBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(signupModal);
+                });
+            }
+            
+            // Login form submission
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+                    
+                    if (email && password) {
+                        const name = email.split('@')[0].replace(/[^a-zA-Z]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        handleLogin(email, name);
+                        alert('Login successful! Welcome back.');
+                    }
+                });
+            }
+            
+            // Signup form submission
+            const signupForm = document.getElementById('signupForm');
+            if (signupForm) {
+                signupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('signupName').value;
+                    const email = document.getElementById('signupEmail').value;
+                    const password = document.getElementById('signupPassword').value;
+                    const confirmPassword = document.getElementById('signupConfirmPassword').value;
+                    
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match!');
+                        return;
+                    }
+                    
+                    if (name && email && password) {
+                        handleLogin(email, name);
+                        alert('Account created successfully! Welcome to Digital Learning.');
+                    }
+                });
+            }
+            
+            // Logout function
+            window.logout = function() {
+                localStorage.removeItem('userLoggedIn');
+                localStorage.removeItem('userName');
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('memberSince');
+                checkAuthStatus();
+                alert('You have been logged out successfully.');
+            };
+            
+            // Close buttons
+            document.querySelectorAll('.close-button').forEach(btn => {
+                btn.addEventListener('click', hideAllModals);
+            });
+            
+            // Click outside to close
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) hideAllModals();
+                });
+            });
+            
+            // Modal switching
+            const switchToSignup = document.getElementById('switchToSignup');
+            const switchToLogin = document.getElementById('switchToLogin');
+            
+            if (switchToSignup) {
+                switchToSignup.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(signupModal);
+                });
+            }
+            
+            if (switchToLogin) {
+                switchToLogin.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(loginModal);
+                });
+            }
+            
+            // ESC key to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideAllModals();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Digital Learning</title>
+    <link rel="stylesheet" href="style-dark.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html" style="color: white; text-decoration: none;"><div class="logo-container">
+                    <div class="logo-icon">
+                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="38" height="38" rx="8" fill="url(#uniqueGrad1)" stroke="url(#uniqueGrad2)" stroke-width="2"/>
+                            <path d="M12 15L21 24L30 15" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="18" y="8" width="6" height="6" rx="3" fill="white"/>
+                            <circle cx="15" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <circle cx="21" cy="32" r="1.5" fill="rgba(255,255,255,0.6)"/>
+                            <circle cx="27" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <defs>
+                                <linearGradient id="uniqueGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea"/>
+                                    <stop offset="50%" style="stop-color:#764ba2"/>
+                                    <stop offset="100%" style="stop-color:#f093fb"/>
+                                </linearGradient>
+                                <linearGradient id="uniqueGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#a8edea"/>
+                                    <stop offset="100%" style="stop-color:#fed6e3"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Digital Learning</span>
+                </div></a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Our Courses</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="auth-buttons"><button id="loginBtnNav" class="nav-button">Login</button></li>
+
+                <li class="auth-buttons"><button id="signupBtnNav" class="nav-button">Sign Up</button></li>
+
+                <li class="profile-menu">
+                    <button id="profileBtn" class="nav-button"><i class="fas fa-user"></i></button>
+                    <div class="profile-dropdown">
+                        <div class="profile-info">
+                            <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                            <h4 class="profile-name">Student User</h4>
+                            <p class="profile-email">student@digitallearning.edu</p>
+                        </div>
+                        <ul class="profile-links">
+                            <li><a href="profile.html" class="active"><i class="fas fa-user-cog"></i> My Profile</a></li>
+                            <li><a href="#"><i class="fas fa-chart-line"></i> Progress</a></li>
+                            <li><a href="#"><i class="fas fa-bookmark"></i> Bookmarks</a></li>
+                            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="profile-page">
+            <div class="profile-container">
+                <div class="profile-header glass">
+                    <div class="profile-avatar-large">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-info-main">
+                        <h1>Student User</h1>
+                        <p>student@digitallearning.edu</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number">5</span>
+                                <span class="stat-label">Courses</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">78%</span>
+                                <span class="stat-label">Progress</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">24</span>
+                                <span class="stat-label">Certificates</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-content">
+                    <div class="profile-section glass">
+                        <h3><i class="fas fa-user-edit"></i> Personal Information</h3>
+                        <form class="profile-form">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" value="Student User" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="student@digitallearning.edu" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Member Since</label>
+                                <input type="text" value="January 2024" readonly>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="profile-section glass">
+                        <h3><i class="fas fa-chart-line"></i> Learning Progress</h3>
+                        <div class="progress-overview">
+                            <div class="course-progress">
+                                <div class="course-item">
+                                    <span>Mathematics</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 85%"></div>
+                                    </div>
+                                    <span>85%</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>Science</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 72%"></div>
+                                    </div>
+                                    <span>72%</span>
+                                </div>
+                                <div class="course-item">
+                                    <span>Programming</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 90%"></div>
+                                    </div>
+                                    <span>90%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Digital Learning</h3>
+                <p>An innovative AI-powered learning platform.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-enhanced.js"></script>
+    <script src="profile-dropdown.js"></script>
+    <script>
+        // Profile Page Dynamic Content
+        document.addEventListener('DOMContentLoaded', function() {
+            const userName = localStorage.getItem('userName') || 'Student User';
+            const userEmail = localStorage.getItem('userEmail') || 'student@digitallearning.edu';
+            const memberSince = localStorage.getItem('memberSince') || 'January 2024';
+            
+            // Update profile page content
+            const profileNameElements = document.querySelectorAll('.profile-name, h1');
+            const profileEmailElements = document.querySelectorAll('.profile-email, input[value*="@"]');
+            const memberSinceElements = document.querySelectorAll('input[value*="2024"]');
+            
+            profileNameElements.forEach(el => {
+                if (el.tagName === 'H1' || el.classList.contains('profile-name')) {
+                    el.textContent = userName;
+                }
+            });
+            
+            profileEmailElements.forEach(el => {
+                if (el.tagName === 'INPUT') {
+                    el.value = userEmail;
+                } else {
+                    el.textContent = userEmail;
+                }
+            });
+            
+            memberSinceElements.forEach(el => {
+                if (el.tagName === 'INPUT') {
+                    el.value = memberSince;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

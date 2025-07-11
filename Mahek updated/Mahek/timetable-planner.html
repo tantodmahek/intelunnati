@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Timetable Planner - Digital Learning</title>
+    <link rel="stylesheet" href="style-dark.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Perfect Loading Screen -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader"></div>
+        <p style="color: var(--text-secondary); margin-top: 1rem;">Loading your learning experience...</p>
+    </div>
+    
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html" style="color: white; text-decoration: none;"><div class="logo-container">
+                    <div class="logo-icon">
+                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="38" height="38" rx="8" fill="url(#uniqueGrad1)" stroke="url(#uniqueGrad2)" stroke-width="2"/>
+                            <path d="M12 15L21 24L30 15" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="18" y="8" width="6" height="6" rx="3" fill="white"/>
+                            <circle cx="15" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <circle cx="21" cy="32" r="1.5" fill="rgba(255,255,255,0.6)"/>
+                            <circle cx="27" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <defs>
+                                <linearGradient id="uniqueGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea"/>
+                                    <stop offset="50%" style="stop-color:#764ba2"/>
+                                    <stop offset="100%" style="stop-color:#f093fb"/>
+                                </linearGradient>
+                                <linearGradient id="uniqueGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#a8edea"/>
+                                    <stop offset="100%" style="stop-color:#fed6e3"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Digital Learning</span>
+                </div></a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="features.html" class="active">Features</a>
+                                        <div class="dropdown-content">
+                        <a href="video-lessons.html"><i class="fas fa-play-circle"></i> Video Lessons</a>
+                        <a href="timetable-planner.html"><i class="fas fa-calendar-alt"></i> Timetable Planner</a>
+                        <a href="ai-practice.html"><i class="fas fa-brain"></i> AI Practice</a>
+                        <a href="virtual-classroom.html"><i class="fas fa-video"></i> Virtual Classroom</a>
+                        <a href="books.html"><i class="fas fa-book"></i> Book Library</a>
+                        <a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+                    </div>
+                </li>
+                <li><a href="courses.html">Our Courses</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="for-educators.html">For Educators</a></li>
+                
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+                                <li class="profile-menu">
+                    <button id="profileBtn" class="nav-button"><i class="fas fa-user"></i></button>
+                    <div class="profile-dropdown">
+                        <div class="profile-info">
+                            <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                            <h4 class="profile-name">Student User</h4>
+                            <p class="profile-email">student@edutech.com</p>
+                        </div>
+                        <ul class="profile-links">
+                            <li><a href="profile.html"><i class="fas fa-user-cog"></i> My Profile</a></li>
+                            <li><a href="#"><i class="fas fa-chart-line"></i> Progress</a></li>
+                            <li><a href="#"><i class="fas fa-bookmark"></i> Bookmarks</a></li>
+                            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+                    <div>
+                        
+                        <div class="input-group">
+                        <div class="input-icon"><i class="fas fa-lock"></i></div>
+                        <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                    </div>
+                    </div>
+                    <button type="submit" class="cta-button">Login</button>
+                    <p class="modal-switch">Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+
+        
+
+        <section id="timetable-planner" class="animate-on-scroll">
+            <h2><i class="fas fa-calendar-alt"></i> Plan Your Self-Study Time</h2>
+            <p>Organize your learning schedule effectively with our intuitive timetable planner. Set your study goals, allocate time for different subjects, and keep track of your progress. This feature is designed to help you manage your time efficiently and stay on top of your self-study routine.</p>
+
+            <div class="feature-highlight glass animate-on-scroll">
+                <img src="https://via.placeholder.com/400x300/6c5ce7/ffffff?text=Timetable+Interface" alt="Timetable Planner Interface Mockup" class="feature-image">
+                <div class="feature-description">
+                    <h3><i class="fas fa-star"></i> Key Planner Features:</h3>
+                    <ul>
+                        <li><i class="fas fa-sliders-h"></i> <strong>Customizable Schedule:</strong> Create daily, weekly, or monthly study plans.</li>
+                        <li><i class="fas fa-book-open"></i> <strong>Subject Allocation:</strong> Assign specific time slots for different courses or topics.</li>
+                        <li><i class="fas fa-bullseye"></i> <strong>Goal Setting:</strong> Define learning objectives for each study session.</li>
+                        <li><i class="fas fa-bell"></i> <strong>Reminders & Notifications:</strong> Get alerts for upcoming study blocks (future update).</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Progress Tracking:</strong> Mark completed sessions and visualize your consistency.</li>
+                    </ul>
+                    <button id="startPlanningBtn" class="cta-button">Start Planning</button>
+                </div>
+            </div>
+
+            <div id="timetableContainer" class="glass" style="margin-top: 3rem; display: none; padding: 2rem; border-radius: 15px;">
+                <h3><i class="fas fa-table"></i> My Weekly Timetable</h3>
+                <div id="addBlockFormContainer" class="glass" style="margin-bottom: 2rem; padding: 1.5rem; border-radius: 10px; text-align:left;">
+                    <h4><i class="fas fa-plus-circle"></i> Add New Study Block</h4>
+                    <form id="addBlockForm">
+                        <div style="margin-bottom: 0.5rem;">
+                            
+                            <select id="blockDay" name="day" required>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 0.5rem;">
+                            
+                            <input type="time" id="blockTime" name="time" required>
+                        </div>
+                        <div style="margin-bottom: 0.5rem;">
+                            
+                            <input type="text" id="blockSubject" name="subject" required>
+                        </div>
+                        <div style="margin-bottom: 0.5rem;">
+                            
+                            <input type="number" id="blockDuration" name="duration" min="0.5" step="0.5" value="1" required>
+                        </div>
+                        <button type="submit" class="cta-button-secondary">Add Block</button>
+                    </form>
+                </div>
+
+                <div id="alertSettingsContainer" class="glass" style="margin-bottom: 2rem; padding: 1.5rem; border-radius: 10px; text-align:left;">
+                    <h4><i class="fas fa-cog"></i> Alert Settings</h4>
+                    <label class="switch">
+                        <input type="checkbox" id="enableAlertsToggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span style="margin-left: 0.5rem;">Enable Study Reminders</span>
+                    <p style="font-size: 0.8em; color: #7f8c8d; margin-top: 0.5rem;">(Login required to save alert preferences and receive notifications)</p>
+                </div>
+
+                <table id="weeklyTimetable" class="timetable-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Time slots will be dynamically generated by JS -->
+                        <!-- Example: <tr><td>09:00 - 10:00</td><td></td><td></td>...</tr> -->
+                    </tbody>
+                </table>
+                <p style="margin-top: 1rem; font-size: 0.9em;"><em>Click "Start Planning" to reveal the interactive timetable. Add study blocks using the form.</em></p>
+            </div>
+        </section>
+    </main>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content glass">
+                <span class="close-button" id="closeLoginModal">&times;</span>
+                <div class="modal-header">
+                    <div class="modal-icon"><i class="fas fa-sign-in-alt"></i></div>
+                    <h2>Welcome Back</h2>
+                    <p class="modal-subtitle">Sign in to your account</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Signup Modal -->
+        <div id="signupModal" class="modal">
+            <div class="modal-content glass">
+                <span class="close-button" id="closeSignupModal">&times;</span>
+                <div class="modal-header">
+                    <div class="modal-icon"><i class="fas fa-user-plus"></i></div>
+                    <h2>Join Us Today</h2>
+                    <p class="modal-subtitle">Create your learning account</p>
+                </div>
+                
+            </div>
+        </div>
+    <footer>
+        <p></p>
+    </footer>
+    <script src="script-enhanced.js"></script>
+    <script src="profile-dropdown.js"></script>
+    
+    <script>
+        // Perfect Modal System
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtnNav');
+            const signupBtn = document.getElementById('signupBtnNav');
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            
+            function showModal(modal) {
+                if (modal) {
+                    // Hide all modals first
+                    document.querySelectorAll('.modal').forEach(m => {
+                        m.style.display = 'none';
+                        m.classList.remove('show');
+                    });
+                    
+                    // Show the requested modal
+                    modal.style.display = 'flex';
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            function hideModal(modal) {
+                if (modal) {
+                    modal.style.display = 'none';
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+            
+            function hideAllModals() {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    hideModal(modal);
+                });
+            }
+            
+            // Login button - shows LOGIN modal
+            if (loginBtn) {
+                loginBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(loginModal);
+                });
+            }
+            
+            // Signup button - shows SIGNUP modal
+            if (signupBtn) {
+                signupBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(signupModal);
+                });
+            }
+            
+            // Close buttons
+            document.querySelectorAll('.close-button').forEach(btn => {
+                btn.addEventListener('click', hideAllModals);
+            });
+            
+            // Click outside to close
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) hideAllModals();
+                });
+            });
+            
+            // Modal switching links
+            const switchToSignup = document.getElementById('switchToSignup');
+            const switchToLogin = document.getElementById('switchToLogin');
+            
+            if (switchToSignup) {
+                switchToSignup.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(signupModal);
+                });
+            }
+            
+            if (switchToLogin) {
+                switchToLogin.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(loginModal);
+                });
+            }
+            
+            // ESC key to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideAllModals();
+            });
+        });
+    </script>
+</body>
+</html>
