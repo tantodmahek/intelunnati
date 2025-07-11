@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Classroom - Digital Learning</title>
+    <link rel="stylesheet" href="style-dark.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1a2e 50%, var(--bg-secondary) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(108, 92, 231, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .classroom-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .classroom-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .classroom-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            height: calc(100vh - 300px);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .video-area {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(108, 92, 231, 0.1);
+        }
+        
+        .video-container {
+            background: #000;
+            border-radius: 8px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .video-placeholder {
+            text-align: center;
+            color: white;
+        }
+        
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background: var(--bg-secondary);
+            border-radius: 50px;
+            gap: 0.5rem;
+        }
+        
+        .control-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .control-divider {
+            width: 1px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 0 1rem;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        .control-btn span {
+            display: none;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .control-btn.active {
+            background: #10b981;
+            border-color: #10b981;
+        }
+        
+        .control-btn.muted {
+            background: #ef4444;
+            border-color: #ef4444;
+        }
+        
+        .control-btn.danger {
+            background: #ef4444;
+            border-color: #ef4444;
+        }
+        
+        .control-btn.danger:hover {
+            background: #dc2626;
+            border-color: #dc2626;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .participants-panel, .chat-panel {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(108, 92, 231, 0.1);
+        }
+        
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--bg-secondary);
+        }
+        
+        .participants-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .participant {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .participant:hover {
+            background: var(--bg-secondary);
+        }
+        
+        .participant-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .participant-info {
+            flex: 1;
+        }
+        
+        .participant-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .participant-status {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .status-indicators {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .status-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+        
+        .status-indicator.mic-on {
+            background: #10b981;
+            color: white;
+        }
+        
+        .status-indicator.mic-off {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .status-indicator.camera-on {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .status-indicator.camera-off {
+            background: #6b7280;
+            color: white;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            max-height: 300px;
+        }
+        
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background: var(--bg-secondary);
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .message-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .message-time {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .message-content {
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+        
+        .chat-input-container {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .chat-input {
+            flex: 1;
+            background: var(--bg-secondary);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: var(--text-primary);
+        }
+        
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .send-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .send-btn:hover {
+            background: var(--primary-hover);
+        }
+        
+        .classroom-status {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(108, 92, 231, 0.1);
+        }
+        
+        .status-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .join-controls {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .join-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .join-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .classroom-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            
+            .sidebar {
+                flex-direction: row;
+            }
+            
+            .participants-panel, .chat-panel {
+                flex: 1;
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html" style="color: white; text-decoration: none;">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="38" height="38" rx="8" fill="url(#uniqueGrad1)" stroke="url(#uniqueGrad2)" stroke-width="2"/>
+                                <path d="M12 15L21 24L30 15" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="18" y="8" width="6" height="6" rx="3" fill="white"/>
+                                <circle cx="15" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                                <circle cx="21" cy="32" r="1.5" fill="rgba(255,255,255,0.6)"/>
+                                <circle cx="27" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                                <defs>
+                                    <linearGradient id="uniqueGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#667eea"/>
+                                        <stop offset="50%" style="stop-color:#764ba2"/>
+                                        <stop offset="100%" style="stop-color:#f093fb"/>
+                                    </linearGradient>
+                                    <linearGradient id="uniqueGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#a8edea"/>
+                                        <stop offset="100%" style="stop-color:#fed6e3"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <span class="logo-text">Digital Learning</span>
+                    </div>
+                </a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="features.html">Features</a>
+                    <div class="dropdown-content">
+                        <a href="video-lessons.html"><i class="fas fa-play-circle"></i> Video Lessons</a>
+                        <a href="timetable-planner.html"><i class="fas fa-calendar-alt"></i> Timetable Planner</a>
+                        <a href="ai-practice.html"><i class="fas fa-brain"></i> AI Practice</a>
+                        <a href="virtual-classroom.html"><i class="fas fa-video"></i> Virtual Classroom</a>
+                        <a href="books.html"><i class="fas fa-book"></i> Book Library</a>
+                        <a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+                    </div>
+                </li>
+                <li><a href="courses.html">Our Courses</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="for-educators.html">For Educators</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="auth-buttons" id="loginBtn">
+                    <button class="nav-button">Login</button>
+                </li>
+                <li class="auth-buttons" id="signupBtn">
+                    <button class="nav-button">Sign Up</button>
+                </li>
+                <li class="profile-menu" id="profileMenu" style="display: none;">
+                    <button id="profileBtn" class="nav-button">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="profile-dropdown">
+                        <div class="profile-info">
+                            <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                            <h4 class="profile-name" id="profileName">User</h4>
+                            <p class="profile-email" id="profileEmail">user@example.com</p>
+                        </div>
+                        <ul class="profile-links">
+                            <li><a href="profile.html"><i class="fas fa-user-cog"></i> My Profile</a></li>
+                            <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="classroom-container">
+            <div class="classroom-header">
+                <h1><i class="fas fa-video"></i> Virtual Study Room</h1>
+                <p>Create or join collaborative study sessions with your peers</p>
+            </div>
+
+            <div class="classroom-status">
+                <div class="status-info">
+                    <div>
+                        <strong>Virtual Study Room</strong>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                            Create your own study room or join existing sessions
+                        </div>
+                    </div>
+                </div>
+                <div class="join-controls">
+                    <button class="join-btn" onclick="createRoom()">Create Room</button>
+                    <button class="join-btn" onclick="joinRoom()" style="background: #10b981; margin-left: 1rem;">Join Room</button>
+                </div>
+            </div>
+
+            <div class="classroom-grid" id="classroomGrid" style="display: none;">
+                <div class="main-content">
+                    <div class="video-area">
+                        <div class="video-container">
+                            <div class="video-placeholder">
+                                <i class="fas fa-video" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                                <h3>Study Room</h3>
+                                <p>Room created successfully. Share the room ID with your study partners.</p>
+                            </div>
+                        </div>
+                        <div class="video-controls">
+                            <div class="control-group">
+                                <button class="control-btn muted" id="micBtn" onclick="toggleMic()" title="Microphone">
+                                    <i class="fas fa-microphone-slash"></i>
+                                </button>
+                                <button class="control-btn muted" id="cameraBtn" onclick="toggleCamera()" title="Camera">
+                                    <i class="fas fa-video-slash"></i>
+                                </button>
+                            </div>
+                            <div class="control-divider"></div>
+                            <div class="control-group">
+                                <button class="control-btn" onclick="shareScreen()" title="Share Screen">
+                                    <i class="fas fa-desktop"></i>
+                                </button>
+                                <button class="control-btn" onclick="raiseHand()" title="Raise Hand">
+                                    <i class="fas fa-hand-paper"></i>
+                                </button>
+                            </div>
+                            <div class="control-divider"></div>
+                            <div class="control-group">
+                                <button class="control-btn danger" onclick="leaveClass()" title="Leave Room">
+                                    <i class="fas fa-phone-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="participants-panel">
+                        <div class="panel-header">
+                            <h3><i class="fas fa-users"></i> Participants</h3>
+                            <span id="participantCount">1</span>
+                        </div>
+                        <div class="participants-list" id="participantsList">
+                            <!-- Participants will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="chat-panel">
+                        <div class="panel-header">
+                            <h3><i class="fas fa-comments"></i> Chat</h3>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <!-- Chat messages will appear here -->
+                        </div>
+                        <div class="chat-input-container">
+                            <input type="text" class="chat-input" id="chatInput" placeholder="Type a message..." onkeypress="handleChatKeyPress(event)">
+                            <button class="send-btn" onclick="sendChatMessage()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-button" id="closeLoginModal">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-sign-in-alt"></i></div>
+                <h2>Welcome Back</h2>
+                <p class="modal-subtitle">Sign in to your account</p>
+            </div>
+            <form id="loginForm">
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-envelope"></i></div>
+                    <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-lock"></i></div>
+                    <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="cta-button modal-btn">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+                <p class="modal-switch">Don't have an account? <a href="#" id="switchToSignup">Create Account</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-button" id="closeSignupModal">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-user-plus"></i></div>
+                <h2>Join Us Today</h2>
+                <p class="modal-subtitle">Create your learning account</p>
+            </div>
+            <form id="signupForm">
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-user"></i></div>
+                    <input type="text" id="signupName" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-envelope"></i></div>
+                    <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-lock"></i></div>
+                    <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
+                </div>
+                <button type="submit" class="cta-button modal-btn">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+                <p class="modal-switch">Already have an account? <a href="#" id="switchToLogin">Sign In</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="particles.js"></script>
+    <script>
+        let isInClass = false;
+        let micEnabled = false;
+        let cameraEnabled = false;
+
+        let participants = [
+            { name: 'You', role: 'Host', mic: false, camera: false }
+        ];
+
+        let chatMessages = [];
+
+        function createRoom() {
+            const roomId = 'ROOM-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+            isInClass = true;
+            document.getElementById('classroomGrid').style.display = 'grid';
+            document.querySelector('.classroom-status').style.display = 'none';
+            
+            loadParticipants();
+            loadChatMessages();
+            
+            setTimeout(() => {
+                addChatMessage('System', 'now', `Study room created! Room ID: ${roomId}`);
+                addChatMessage('System', 'now', 'Share this Room ID with your study partners to invite them.');
+            }, 1000);
+        }
+        
+        function joinRoom() {
+            const meetingId = prompt('Please enter the Meeting ID to join the room:');
+            if (meetingId && meetingId.trim()) {
+                isInClass = true;
+                document.getElementById('classroomGrid').style.display = 'grid';
+                document.querySelector('.classroom-status').style.display = 'none';
+                
+                loadParticipants();
+                loadChatMessages();
+                
+                setTimeout(() => {
+                    addChatMessage('System', 'now', `Successfully joined meeting: ${meetingId.trim()}`);
+                    addChatMessage('System', 'now', 'Welcome to the study room!');
+                }, 1000);
+            } else if (meetingId !== null) {
+                alert('Please enter a valid Meeting ID to join the room.');
+            }
+        }
+
+        function leaveClass() {
+            if (confirm('Are you sure you want to leave the study room?')) {
+                isInClass = false;
+                document.getElementById('classroomGrid').style.display = 'none';
+                document.querySelector('.classroom-status').style.display = 'flex';
+                // Reset to initial state
+                participants = [{ name: 'You', role: 'Host', mic: false, camera: false }];
+                chatMessages = [];
+                document.getElementById('participantCount').textContent = '1';
+            }
+        }
+
+        function toggleMic() {
+            micEnabled = !micEnabled;
+            const micBtn = document.getElementById('micBtn');
+            
+            if (micEnabled) {
+                micBtn.classList.remove('muted');
+                micBtn.classList.add('active');
+                micBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+            } else {
+                micBtn.classList.remove('active');
+                micBtn.classList.add('muted');
+                micBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
+            }
+            
+            // Update participant list
+            updateParticipantStatus('You', 'mic', micEnabled);
+        }
+
+        function toggleCamera() {
+            cameraEnabled = !cameraEnabled;
+            const cameraBtn = document.getElementById('cameraBtn');
+            
+            if (cameraEnabled) {
+                cameraBtn.classList.remove('muted');
+                cameraBtn.classList.add('active');
+                cameraBtn.innerHTML = '<i class="fas fa-video"></i>';
+            } else {
+                cameraBtn.classList.remove('active');
+                cameraBtn.classList.add('muted');
+                cameraBtn.innerHTML = '<i class="fas fa-video-slash"></i>';
+            }
+            
+            // Update participant list
+            updateParticipantStatus('You', 'camera', cameraEnabled);
+        }
+
+        function shareScreen() {
+            alert('Screen sharing feature would be implemented with WebRTC in a real application.');
+        }
+
+        function raiseHand() {
+            addChatMessage('You', 'now', '✋ Raised hand');
+        }
+
+        function loadParticipants() {
+            const participantsList = document.getElementById('participantsList');
+            participantsList.innerHTML = '';
+            
+            participants.forEach(participant => {
+                const participantDiv = document.createElement('div');
+                participantDiv.className = 'participant';
+                participantDiv.innerHTML = `
+                    <div class="participant-avatar">${participant.name.charAt(0)}</div>
+                    <div class="participant-info">
+                        <div class="participant-name">${participant.name}</div>
+                        <div class="participant-status">${participant.role}</div>
+                    </div>
+                    <div class="status-indicators">
+                        <div class="status-indicator ${participant.mic ? 'mic-on' : 'mic-off'}">
+                            <i class="fas fa-microphone${participant.mic ? '' : '-slash'}"></i>
+                        </div>
+                        <div class="status-indicator ${participant.camera ? 'camera-on' : 'camera-off'}">
+                            <i class="fas fa-video${participant.camera ? '' : '-slash'}"></i>
+                        </div>
+                    </div>
+                `;
+                participantsList.appendChild(participantDiv);
+            });
+        }
+
+        function updateParticipantStatus(name, type, enabled) {
+            const participant = participants.find(p => p.name === name);
+            if (participant) {
+                participant[type] = enabled;
+                loadParticipants();
+            }
+        }
+
+        function loadChatMessages() {
+            const chatMessagesContainer = document.getElementById('chatMessages');
+            chatMessagesContainer.innerHTML = '';
+            
+            chatMessages.forEach(message => {
+                addChatMessageToDOM(message.author, message.time, message.content);
+            });
+        }
+
+        function addChatMessage(author, time, content) {
+            chatMessages.push({ author, time, content });
+            addChatMessageToDOM(author, time, content);
+        }
+
+        function addChatMessageToDOM(author, time, content) {
+            const chatMessagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message';
+            messageDiv.innerHTML = `
+                <div class="message-header">
+                    <span class="message-author">${author}</span>
+                    <span class="message-time">${time}</span>
+                </div>
+                <div class="message-content">${content}</div>
+            `;
+            chatMessagesContainer.appendChild(messageDiv);
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        }
+
+        function sendChatMessage() {
+            const chatInput = document.getElementById('chatInput');
+            const message = chatInput.value.trim();
+            
+            if (message && isInClass) {
+                const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                addChatMessage('You', now, message);
+                chatInput.value = '';
+            }
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        // Real-time features would be implemented with WebRTC and Socket.io in production
+        
+        // Authentication System
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const profileMenu = document.getElementById('profileMenu');
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            
+            function updateNavbar() {
+                const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+                const userName = localStorage.getItem('userName') || 'User';
+                const userEmail = localStorage.getItem('userEmail') || 'user@example.com';
+                
+                if (isLoggedIn) {
+                    loginBtn.style.display = 'none';
+                    signupBtn.style.display = 'none';
+                    profileMenu.style.display = 'block';
+                    document.getElementById('profileName').textContent = userName;
+                    document.getElementById('profileEmail').textContent = userEmail;
+                } else {
+                    loginBtn.style.display = 'block';
+                    signupBtn.style.display = 'block';
+                    profileMenu.style.display = 'none';
+                }
+            }
+            
+            function showModal(modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function hideModal(modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            loginBtn.addEventListener('click', () => showModal(loginModal));
+            signupBtn.addEventListener('click', () => showModal(signupModal));
+            
+            document.getElementById('closeLoginModal').addEventListener('click', () => hideModal(loginModal));
+            document.getElementById('closeSignupModal').addEventListener('click', () => hideModal(signupModal));
+            
+            document.getElementById('switchToSignup').addEventListener('click', (e) => {
+                e.preventDefault();
+                hideModal(loginModal);
+                showModal(signupModal);
+            });
+            
+            document.getElementById('switchToLogin').addEventListener('click', (e) => {
+                e.preventDefault();
+                hideModal(signupModal);
+                showModal(loginModal);
+            });
+            
+            document.getElementById('loginForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const name = email.split('@')[0].replace(/[^a-zA-Z]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('userName', name);
+                localStorage.setItem('userEmail', email);
+                hideModal(loginModal);
+                updateNavbar();
+                alert('Login successful!');
+            });
+            
+            document.getElementById('signupForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('signupName').value;
+                const email = document.getElementById('signupEmail').value;
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('userName', name);
+                localStorage.setItem('userEmail', email);
+                hideModal(signupModal);
+                updateNavbar();
+                alert('Account created successfully!');
+            });
+            
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                localStorage.clear();
+                updateNavbar();
+                alert('Logged out successfully!');
+            });
+            
+            [loginModal, signupModal].forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) hideModal(modal);
+                });
+            });
+            
+            updateNavbar();
+        });
+    </script>
+</body>
+</html>
