@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Lessons - Digital Learning</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link rel="stylesheet" href="style-dark.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Perfect Loading Screen -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader"></div>
+        <p style="color: var(--text-secondary); margin-top: 1rem;">Loading your learning experience...</p>
+    </div>
+    
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html" style="color: white; text-decoration: none;"><div class="logo-container">
+                    <div class="logo-icon">
+                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="38" height="38" rx="8" fill="url(#uniqueGrad1)" stroke="url(#uniqueGrad2)" stroke-width="2"/>
+                            <path d="M12 15L21 24L30 15" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="18" y="8" width="6" height="6" rx="3" fill="white"/>
+                            <circle cx="15" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <circle cx="21" cy="32" r="1.5" fill="rgba(255,255,255,0.6)"/>
+                            <circle cx="27" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+                            <defs>
+                                <linearGradient id="uniqueGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea"/>
+                                    <stop offset="50%" style="stop-color:#764ba2"/>
+                                    <stop offset="100%" style="stop-color:#f093fb"/>
+                                </linearGradient>
+                                <linearGradient id="uniqueGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#a8edea"/>
+                                    <stop offset="100%" style="stop-color:#fed6e3"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Digital Learning</span>
+                </div></a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="features.html" class="active">Features</a>
+                                        <div class="dropdown-content">
+                        <a href="video-lessons.html"><i class="fas fa-play-circle"></i> Video Lessons</a>
+                        <a href="timetable-planner.html"><i class="fas fa-calendar-alt"></i> Timetable Planner</a>
+                        <a href="ai-practice.html"><i class="fas fa-brain"></i> AI Practice</a>
+                        <a href="virtual-classroom.html"><i class="fas fa-video"></i> Virtual Classroom</a>
+                        <a href="books.html"><i class="fas fa-book"></i> Book Library</a>
+                        <a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+                    </div>
+                </li>
+                <li><a href="courses.html">Our Courses</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="for-educators.html">For Educators</a></li>
+                
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+                
+                <li class="auth-buttons"><button id="loginBtnNav" class="nav-button">Login</button></li>
+
+                
+                <li class="auth-buttons"><button id="signupBtnNav" class="nav-button">Sign Up</button></li>
+
+                
+                <li class="profile-menu">
+                    <button id="profileBtn" class="nav-button"><i class="fas fa-user"></i></button>
+                    <div class="profile-dropdown">
+                        <div class="profile-info">
+                            <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                            <h4 class="profile-name" id="profileName">User</h4>
+                            <p class="profile-email" id="profileEmail">user@example.com</p>
+                        </div>
+                        <ul class="profile-links">
+                            <li><a href="profile.html"><i class="fas fa-user-cog"></i> My Profile</a></li>
+                            <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+        <section id="video-lessons" class="animate-on-scroll">
+            <h2><i class="fas fa-play-circle"></i> Engaging Video Lessons</h2>
+            <p>Learn at your own pace with our library of high-quality video lessons. Covering a wide range of topics, our videos are designed to make complex concepts easy to understand.</p>
+            
+            <div class="subject-filter">
+                <button class="filter-btn active" data-subject="all">All Subjects</button>
+                <button class="filter-btn" data-subject="mathematics">Mathematics</button>
+                <button class="filter-btn" data-subject="science">Science</button>
+                <button class="filter-btn" data-subject="programming">Programming</button>
+                <button class="filter-btn" data-subject="webdev">Web Development</button>
+                <button class="filter-btn" data-subject="mobile">Mobile Development</button>
+                <button class="filter-btn" data-subject="history">History</button>
+            </div>
+            
+            <div class="video-gallery">
+                <!-- Mathematics Videos -->
+                <div class="video-item glass animate-on-scroll" data-subject="mathematics">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/NybHckSEQBI" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Algebra Basics: What Is Algebra?</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calculator"></i> Mathematics</span>
+                            <span><i class="fas fa-clock"></i> 8:17</span>
+                            <span><i class="fas fa-eye"></i> 2.1M views</span>
+                        </div>
+                        <p>Learn the fundamentals of algebra with clear explanations and examples from Khan Academy.</p>
+                        <a href="https://www.youtube.com/watch?v=NybHckSEQBI" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="mathematics">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/WUvTyaaNkzM" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Calculus Explained in 20 Minutes</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calculator"></i> Mathematics</span>
+                            <span><i class="fas fa-clock"></i> 20:19</span>
+                            <span><i class="fas fa-eye"></i> 1.8M views</span>
+                        </div>
+                        <p>Complete introduction to calculus concepts including derivatives and integrals.</p>
+                        <a href="https://www.youtube.com/watch?v=WUvTyaaNkzM" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="mathematics">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Statistics and Probability</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calculator"></i> Mathematics</span>
+                            <span><i class="fas fa-clock"></i> 35:42</span>
+                            <span><i class="fas fa-eye"></i> 2.3M views</span>
+                        </div>
+                        <p>Learn fundamental concepts of statistics, probability, and data analysis.</p>
+                        <a href="https://www.youtube.com/watch?v=fNk_zzaMoSs" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="mathematics">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/fNk_zzaMoSs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Statistics and Probability</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calculator"></i> Mathematics</span>
+                            <span><i class="fas fa-clock"></i> 35:42</span>
+                            <span><i class="fas fa-eye"></i> 2.3M views</span>
+                        </div>
+                        <p>Learn fundamental concepts of statistics, probability, and data analysis.</p>
+                        <a href="https://www.youtube.com/watch?v=fNk_zzaMoSs" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="mathematics">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/sULa9Lc4pck" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Geometry Fundamentals</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calculator"></i> Mathematics</span>
+                            <span><i class="fas fa-clock"></i> 28:15</span>
+                            <span><i class="fas fa-eye"></i> 1.6M views</span>
+                        </div>
+                        <p>Master shapes, angles, area, and volume with clear geometric explanations.</p>
+                        <a href="https://www.youtube.com/watch?v=sULa9Lc4pck" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <!-- Science Videos -->
+                <div class="video-item glass animate-on-scroll" data-subject="science">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/8HEfIJlcFbs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Introduction to Cells: The Grand Cell Tour</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-microscope"></i> Biology</span>
+                            <span><i class="fas fa-clock"></i> 12:26</span>
+                            <span><i class="fas fa-eye"></i> 3.2M views</span>
+                        </div>
+                        <p>Crash Course Biology explores the basic unit of life and cellular structure.</p>
+                        <a href="https://www.youtube.com/watch?v=8HEfIJlcFbs" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="science">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/ZM8ECpBuQYE" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Physics Explained: Motion and Forces</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-atom"></i> Physics</span>
+                            <span><i class="fas fa-clock"></i> 18:32</span>
+                            <span><i class="fas fa-eye"></i> 1.5M views</span>
+                        </div>
+                        <p>Understand fundamental physics concepts including Newton's laws and motion.</p>
+                        <a href="https://www.youtube.com/watch?v=ZM8ECpBuQYE" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="science">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/FSyAehMdpyI" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Chemistry Basics: Atoms and Elements</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-flask"></i> Chemistry</span>
+                            <span><i class="fas fa-clock"></i> 14:45</span>
+                            <span><i class="fas fa-eye"></i> 2.7M views</span>
+                        </div>
+                        <p>Learn about atomic structure, elements, and the periodic table fundamentals.</p>
+                        <a href="https://www.youtube.com/watch?v=FSyAehMdpyI" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="science">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/QnQe0xW_JY4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>DNA and Genetics Explained</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-dna"></i> Biology</span>
+                            <span><i class="fas fa-clock"></i> 22:30</span>
+                            <span><i class="fas fa-eye"></i> 3.8M views</span>
+                        </div>
+                        <p>Understand heredity, DNA structure, and genetic inheritance patterns.</p>
+                        <a href="https://www.youtube.com/watch?v=QnQe0xW_JY4" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="science">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/7ImvlS8PLIo" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Climate Change and Global Warming</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-globe-americas"></i> Environmental Science</span>
+                            <span><i class="fas fa-clock"></i> 18:45</span>
+                            <span><i class="fas fa-eye"></i> 4.2M views</span>
+                        </div>
+                        <p>Explore the science behind climate change and its global impact.</p>
+                        <a href="https://www.youtube.com/watch?v=7ImvlS8PLIo" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <!-- Programming Videos -->
+                <div class="video-item glass animate-on-scroll" data-subject="programming">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/_uQrJ0TkZlc" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Python Programming Tutorial - Full Course</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-code"></i> Programming</span>
+                            <span><i class="fas fa-clock"></i> 4:26:52</span>
+                            <span><i class="fas fa-eye"></i> 15M views</span>
+                        </div>
+                        <p>Complete Python tutorial for beginners - learn programming from scratch with practical examples.</p>
+                        <a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="programming">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/PkZNo7MFNFg" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>JavaScript Tutorial for Beginners</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-code"></i> Programming</span>
+                            <span><i class="fas fa-clock"></i> 1:00:00</span>
+                            <span><i class="fas fa-eye"></i> 8.5M views</span>
+                        </div>
+                        <p>Learn JavaScript fundamentals including variables, functions, and DOM manipulation.</p>
+                        <a href="https://www.youtube.com/watch?v=PkZNo7MFNFg" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="programming">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/rfscVS0vtbw" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Learn Java Programming</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-code"></i> Programming</span>
+                            <span><i class="fas fa-clock"></i> 2:30:00</span>
+                            <span><i class="fas fa-eye"></i> 6.2M views</span>
+                        </div>
+                        <p>Complete Java tutorial covering OOP concepts, data structures, and algorithms.</p>
+                        <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="programming">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/KJgsSFOSQv0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>C++ Programming Tutorial</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-code"></i> Programming</span>
+                            <span><i class="fas fa-clock"></i> 3:15:00</span>
+                            <span><i class="fas fa-eye"></i> 4.8M views</span>
+                        </div>
+                        <p>Master C++ programming from basics to advanced concepts and memory management.</p>
+                        <a href="https://www.youtube.com/watch?v=KJgsSFOSQv0" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="webdev">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/UB1O30fR-EE" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>HTML CSS JavaScript - Website Tutorial</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-globe"></i> Web Development</span>
+                            <span><i class="fas fa-clock"></i> 1:30:00</span>
+                            <span><i class="fas fa-eye"></i> 12M views</span>
+                        </div>
+                        <p>Build a complete website from scratch using HTML, CSS, and JavaScript.</p>
+                        <a href="https://www.youtube.com/watch?v=UB1O30fR-EE" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="webdev">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/G3e-cpL7ofc" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>React.js Full Course</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-globe"></i> Web Development</span>
+                            <span><i class="fas fa-clock"></i> 2:45:00</span>
+                            <span><i class="fas fa-eye"></i> 9.8M views</span>
+                        </div>
+                        <p>Master React.js with hooks, components, and state management from scratch.</p>
+                        <a href="https://www.youtube.com/watch?v=G3e-cpL7ofc" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="webdev">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/1Rs2ND1ryYc" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Node.js and Express.js Tutorial</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-server"></i> Backend Development</span>
+                            <span><i class="fas fa-clock"></i> 1:45:00</span>
+                            <span><i class="fas fa-eye"></i> 7.2M views</span>
+                        </div>
+                        <p>Build server-side applications with Node.js and Express framework.</p>
+                        <a href="https://www.youtube.com/watch?v=1Rs2ND1ryYc" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="webdev">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/Tn6-PIqc4UM" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>CSS Grid and Flexbox Tutorial</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-code"></i> CSS</span>
+                            <span><i class="fas fa-clock"></i> 42:30</span>
+                            <span><i class="fas fa-eye"></i> 4.8M views</span>
+                        </div>
+                        <p>Master modern CSS layout techniques with Grid and Flexbox for responsive design.</p>
+                        <a href="https://www.youtube.com/watch?v=Tn6-PIqc4UM" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="webdev">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/9kJVYpOqcVU" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>MongoDB Database Tutorial</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-database"></i> Database</span>
+                            <span><i class="fas fa-clock"></i> 2:15:00</span>
+                            <span><i class="fas fa-eye"></i> 3.2M views</span>
+                        </div>
+                        <p>Learn NoSQL database fundamentals with MongoDB for modern web applications.</p>
+                        <a href="https://www.youtube.com/watch?v=9kJVYpOqcVU" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="mobile">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/0-S5a0eXPoc" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>React Native Tutorial for Beginners</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-mobile-alt"></i> Mobile Development</span>
+                            <span><i class="fas fa-clock"></i> 2:15:00</span>
+                            <span><i class="fas fa-eye"></i> 5M views</span>
+                        </div>
+                        <p>Learn to build mobile apps with React Native - complete beginner course.</p>
+                        <a href="https://www.youtube.com/watch?v=0-S5a0eXPoc" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="mobile">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/Hf4MJH0jDb4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Flutter App Development</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-mobile-alt"></i> Mobile Development</span>
+                            <span><i class="fas fa-clock"></i> 3:20:00</span>
+                            <span><i class="fas fa-eye"></i> 6.5M views</span>
+                        </div>
+                        <p>Build cross-platform mobile apps with Flutter and Dart programming language.</p>
+                        <a href="https://www.youtube.com/watch?v=Hf4MJH0jDb4" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="mobile">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/VozPNrt-LfE" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Android App Development with Kotlin</h3>
+                        <div class="video-meta">
+                            <span><i class="fab fa-android"></i> Android</span>
+                            <span><i class="fas fa-clock"></i> 4:15:00</span>
+                            <span><i class="fas fa-eye"></i> 5.8M views</span>
+                        </div>
+                        <p>Complete Android development course using Kotlin programming language.</p>
+                        <a href="https://www.youtube.com/watch?v=VozPNrt-LfE" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="mobile">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/0n809nd4Zu4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>iOS App Development with Swift</h3>
+                        <div class="video-meta">
+                            <span><i class="fab fa-apple"></i> iOS</span>
+                            <span><i class="fas fa-clock"></i> 3:45:00</span>
+                            <span><i class="fas fa-eye"></i> 4.2M views</span>
+                        </div>
+                        <p>Learn iOS app development using Swift and Xcode for iPhone and iPad apps.</p>
+                        <a href="https://www.youtube.com/watch?v=0n809nd4Zu4" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <!-- Language Arts Videos -->
+
+                
+
+                
+                <!-- History Videos -->
+                <div class="video-item glass animate-on-scroll" data-subject="history">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/xuCn8ux2gbs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>World History Crash Course</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-globe"></i> History</span>
+                            <span><i class="fas fa-clock"></i> 42:15</span>
+                            <span><i class="fas fa-eye"></i> 5.3M views</span>
+                        </div>
+                        <p>Journey through major historical events and civilizations that shaped our world.</p>
+                        <a href="https://www.youtube.com/watch?v=xuCn8ux2gbs" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+
+                
+                <div class="video-item glass animate-on-scroll" data-subject="history">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/Yocja_N5s1I" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>The Renaissance Explained</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-palette"></i> History</span>
+                            <span><i class="fas fa-clock"></i> 16:28</span>
+                            <span><i class="fas fa-eye"></i> 2.1M views</span>
+                        </div>
+                        <p>Explore the cultural and intellectual movement that transformed Europe.</p>
+                        <a href="https://www.youtube.com/watch?v=Yocja_N5s1I" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="history">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/BEhsKbwNhvY" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Ancient Civilizations: Egypt and Mesopotamia</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-monument"></i> Ancient History</span>
+                            <span><i class="fas fa-clock"></i> 38:45</span>
+                            <span><i class="fas fa-eye"></i> 4.7M views</span>
+                        </div>
+                        <p>Discover the rise of early civilizations and their lasting contributions.</p>
+                        <a href="https://www.youtube.com/watch?v=BEhsKbwNhvY" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+                
+                <div class="video-item glass animate-on-scroll" data-subject="history">
+                    <div class="video-thumbnail">
+                        <iframe width="100%" height="200" src="https://www.youtube.com/embed/jvO0P5-SMxk" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>World War II Documentary</h3>
+                        <div class="video-meta">
+                            <span><i class="fas fa-globe"></i> Modern History</span>
+                            <span><i class="fas fa-clock"></i> 52:30</span>
+                            <span><i class="fas fa-eye"></i> 8.9M views</span>
+                        </div>
+                        <p>Comprehensive overview of the causes, events, and consequences of WWII.</p>
+                        <a href="https://www.youtube.com/watch?v=jvO0P5-SMxk" target="_blank" class="cta-button watch-button">Watch Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-button" id="closeLoginModal">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-sign-in-alt"></i></div>
+                <h2>Welcome Back</h2>
+                <p class="modal-subtitle">Sign in to your account</p>
+            </div>
+            <form id="loginForm">
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-envelope"></i></div>
+                    <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-lock"></i></div>
+                    <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="cta-button modal-btn">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+                <div class="modal-divider"><span>or</span></div>
+                <button type="button" class="social-btn google-btn">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+                <p class="modal-switch">Don't have an account? <a href="#" id="switchToSignup">Create Account</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-button" id="closeSignupModal">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon"><i class="fas fa-user-plus"></i></div>
+                <h2>Join Us Today</h2>
+                <p class="modal-subtitle">Create your learning account</p>
+            </div>
+            <form id="signupForm">
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-user"></i></div>
+                    <input type="text" id="signupName" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-envelope"></i></div>
+                    <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-lock"></i></div>
+                    <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
+                </div>
+                <div class="input-group">
+                    <div class="input-icon"><i class="fas fa-lock"></i></div>
+                    <input type="password" id="signupConfirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#">Terms & Conditions</a>
+                    </label>
+                </div>
+                <button type="submit" class="cta-button modal-btn">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+                <p class="modal-switch">Already have an account? <a href="#" id="switchToLogin">Sign In</a></p>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p></p>
+    </footer>
+    <script src="particles.js"></script>
+    <script src="script-enhanced.js"></script>
+    <script src="profile-dropdown.js"></script>
+    
+    <script>
+        // Updated Authentication System
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtnNav');
+            const signupBtn = document.getElementById('signupBtnNav');
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            const authButtons = document.querySelectorAll('.auth-buttons');
+            const profileMenu = document.querySelector('.profile-menu');
+            
+            // Check login status on page load
+            checkAuthStatus();
+            
+            function checkAuthStatus() {
+                const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+                const userName = localStorage.getItem('userName') || 'User';
+                const userEmail = localStorage.getItem('userEmail') || 'user@example.com';
+                
+                if (isLoggedIn) {
+                    // Hide login/signup buttons
+                    authButtons.forEach(btn => btn.style.display = 'none');
+                    // Show profile menu
+                    if (profileMenu) profileMenu.style.display = 'block';
+                    // Update profile info
+                    const profileName = document.getElementById('profileName');
+                    const profileEmail = document.getElementById('profileEmail');
+                    if (profileName) profileName.textContent = userName;
+                    if (profileEmail) profileEmail.textContent = userEmail;
+                } else {
+                    // Show login/signup buttons
+                    authButtons.forEach(btn => btn.style.display = 'block');
+                    // Hide profile menu
+                    if (profileMenu) profileMenu.style.display = 'none';
+                }
+            }
+            
+            function showModal(modal) {
+                if (modal) {
+                    document.querySelectorAll('.modal').forEach(m => {
+                        m.style.display = 'none';
+                        m.classList.remove('show');
+                    });
+                    modal.style.display = 'flex';
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            function hideAllModals() {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                    modal.classList.remove('show');
+                });
+                document.body.style.overflow = 'auto';
+            }
+            
+            function handleLogin(email, name) {
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userName', name);
+                localStorage.setItem('memberSince', new Date().toLocaleDateString());
+                checkAuthStatus();
+                hideAllModals();
+            }
+            
+            // Login button click
+            if (loginBtn) {
+                loginBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(loginModal);
+                });
+            }
+            
+            // Signup button click
+            if (signupBtn) {
+                signupBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(signupModal);
+                });
+            }
+            
+            // Login form submission
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value;
+                    
+                    if (email) {
+                        const name = email.split('@')[0].replace(/[^a-zA-Z]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        handleLogin(email, name);
+                        alert('Login successful! Welcome back.');
+                    }
+                });
+            }
+            
+            // Signup form submission
+            const signupForm = document.getElementById('signupForm');
+            if (signupForm) {
+                signupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('signupName').value;
+                    const email = document.getElementById('signupEmail').value;
+                    const password = document.getElementById('signupPassword').value;
+                    
+                    if (name && email && password) {
+                        handleLogin(email, name);
+                        alert('Account created successfully! Welcome to Digital Learning.');
+                    }
+                });
+            }
+            
+            // Close buttons
+            document.querySelectorAll('.close-button').forEach(btn => {
+                btn.addEventListener('click', hideAllModals);
+            });
+            
+            // Click outside to close
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) hideAllModals();
+                });
+            });
+            
+            // Modal switching
+            const switchToSignup = document.getElementById('switchToSignup');
+            const switchToLogin = document.getElementById('switchToLogin');
+            
+            if (switchToSignup) {
+                switchToSignup.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(signupModal);
+                });
+            }
+            
+            if (switchToLogin) {
+                switchToLogin.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal(loginModal);
+                });
+            }
+            
+            // Logout functionality
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.clear();
+                    checkAuthStatus();
+                    alert('Logged out successfully!');
+                });
+            }
+            
+            // ESC key to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideAllModals();
+            });
+            
+            // Video filtering functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const videoItems = document.querySelectorAll('.video-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    const subject = btn.getAttribute('data-subject');
+                    
+                    videoItems.forEach(video => {
+                        if (subject === 'all' || video.getAttribute('data-subject') === subject) {
+                            video.style.display = 'block';
+                        } else {
+                            video.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
